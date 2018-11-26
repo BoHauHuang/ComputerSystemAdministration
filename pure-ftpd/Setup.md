@@ -44,6 +44,8 @@ Use pw to manage system user (can add user, modify user, delete user, etc.)
 [ pw useradd NAME -u UID -g GID -d /HOME_DIR -s LOGIN_SHELL]
 ```bash
 pw useradd ftp -u 21 -g 21 -d /home/ftp -s /bin/sh
+```
+```
 pw: system user managing tool
 useradd: add an user
 ftp: user name is "ftp"
