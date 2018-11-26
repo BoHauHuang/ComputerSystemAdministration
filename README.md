@@ -12,4 +12,4 @@
 
 ## ZFS and Zpool
 
-## Writing a ZFS script
+## Writing a Command
