@@ -9,3 +9,7 @@
 **(2) How to manage FTP users**
 
 **(3) Specific user restriction** 
+
+## ZFS and Zpool
+
+## Writing a ZFS script
