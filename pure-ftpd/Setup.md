@@ -46,13 +46,13 @@ Use pw to manage system user (can add user, modify user, delete user, etc.)
 pw useradd ftp -u 21 -g 21 -d /home/ftp -s /bin/sh
 ```
 ```
-pw: system user managing tool
-useradd: add an user
-ftp: user name is "ftp"
--u: user UID is 21
--g: user GID is 21
--d: user home directory is /home/ftp
--s: user login shell is "sh" 
+pw:         system user managing tool
+useradd:    add an user
+ftp:        user name is "ftp"
+-u:         user UID is 21
+-g:         user GID is 21
+-d:         user home directory is /home/ftp
+-s:         user login shell is "sh" 
 ```
 ## Create Virtual Users for FTP
 (1) For ftp users, we need to create at least one system user for them.
