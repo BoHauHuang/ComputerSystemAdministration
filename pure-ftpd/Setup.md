@@ -5,6 +5,7 @@
 (2) Open port 30000~50000 in firewall for FTP passive-mode
 
 ***If you can't open so many ports in one time***
+
 ***open few ports, such as port 30000~30004 is also okay***
 
 ## Port Install
@@ -37,11 +38,12 @@ And do what you want to change for the pure-ftpd
 
 ## Create Anonymous User for FTP
 ***for anonymous user, we need to create a system user called "ftp" for him.***
+
 Use pw to manage system user (can add user, modify user, delete user, etc.)
+
 [ pw useradd NAME -u UID -g GID -d /HOME_DIR -s LOGIN_SHELL]
 ```bash
 pw useradd ftp -u 21 -g 21 -d /home/ftp -s /bin/sh
-```
 pw: system user managing tool
 useradd: add an user
 ftp: user name is "ftp"
@@ -49,7 +51,7 @@ ftp: user name is "ftp"
 -g: user GID is 21
 -d: user home directory is /home/ftp
 -s: user login shell is "sh" 
-
+```
 ## Create Virtual Users for FTP
 (1) For ftp users, we need to create at least one system user for them.
 
