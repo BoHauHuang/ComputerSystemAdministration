@@ -62,7 +62,7 @@ ftp:              user name is "ftp"
 -d /home/ftp:     user home directory is /home/ftp
 -s /bin.sh:       user login shell is "sh" 
 ```
-***If your 
+
 ## Create Virtual Users for FTP
 (1) For ftp users, we need to create at least one system user for them.
 
