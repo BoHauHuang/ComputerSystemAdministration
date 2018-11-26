@@ -36,6 +36,14 @@ vim pure-ftpd.conf
 ```
 And do what you want to change for the pure-ftpd
 
+Such as
+```bash
+MinUID                10
+PureDB                /usr/local/etc/pureftpd.pdb
+TLS                   1
+CertFile              /etc/ssl/private/pure-ftpd.pem
+```
+
 ## Create Anonymous User for FTP
 ***for anonymous user, we need to create a system user called "ftp" for him.***
 
@@ -46,14 +54,15 @@ Use pw to manage system user (can add user, modify user, delete user, etc.)
 pw useradd ftp -u 21 -g 21 -d /home/ftp -s /bin/sh
 ```
 ```
-pw:         system user managing tool
-useradd:    add an user
-ftp:        user name is "ftp"
--u:         user UID is 21
--g:         user GID is 21
--d:         user home directory is /home/ftp
--s:         user login shell is "sh" 
+pw:               system user managing tool
+useradd:          add an user
+ftp:              user name is "ftp"
+-u 21:            user UID is 21 (Because MinUID is 10, so 21 is okay)
+-g 21:            user GID is 21
+-d /home/ftp:     user home directory is /home/ftp
+-s /bin.sh:       user login shell is "sh" 
 ```
+***If your 
 ## Create Virtual Users for FTP
 (1) For ftp users, we need to create at least one system user for them.
 
