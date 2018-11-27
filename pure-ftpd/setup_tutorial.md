@@ -49,29 +49,62 @@ CertFile              /etc/ssl/private/pure-ftpd.pem
 
 Use pw to manage system user (can add user, modify user, delete user, etc.)
 
+[ pw groupadd GROUPNAME -g GID]
+
 [ pw useradd NAME -u UID -g GID -d /HOME_DIR -s LOGIN_SHELL]
 
-For anonymous user, we need to create a system user named "ftp".
+(1) For anonymous user, we need to create a system user named "ftp".
 ```bash
+pw groupadd anonymous -g 21
 pw useradd ftp -u 21 -g 21 -d /home/ftp -s /bin/bash
 ```
 ```
 pw:               system user managing tool
+groupadd:         add a group
+anonymous:        group name is "anonymous"
+-g 21:            group GID is 21
+
+useradd:          add an user
+ftp:              username is "ftp"
+-u 21:            user's UID is 21 
+-g 21:            user's GID is 21
+-d /home/ftp:     user's home directory is /home/ftp
+-s /bin/bash:     user's login shell is "bash" 
+```
+(2) Use pure-pw to manage FTP users of pure-ftpd
+
+[ pure-pw useradd NAME -u UID -g GID -d /HOME_DIR]
+```bash
+pure-pw useradd ftp -u 21 -g 21 -d /home/ftp
+```
+```
+pure-pw:          pure-ftpd user managing tool
 useradd:          add an user
 ftp:              username is "ftp"
 -u 21:            user's UID is 21 (Because MinUID is 10, so 21 is okay)
 -g 21:            user's GID is 21
 -d /home/ftp:     user's home directory is /home/ftp
--s /bin/bash:     user's login shell is "bash" 
 ```
 
+
 ## Create Virtual Users for FTP
-For virtual ftp users, we need to create at least one system user for them.
+Use pw to manage system user (can add user, modify user, delete user, etc.)
+
+[ pw groupadd GROUPNAME -g GID]
+
+[ pw useradd NAME -u UID -g GID -d /HOME_DIR -s LOGIN_SHELL]
+
+(1) For virtual ftp users, we need to create at least one system user for them.
 ```bash
+pw groupadd ftpgroup -g 666
 pw useradd ftpuser -u 666 -g 666 -d /home/ftp -s /bin/bash
 ```
 ```
 pw:               system user managing tool
+groupadd:         add a group
+ftpgroup:         group name is "ftpgroup"
+-g 666:           group GID is 666
+
 useradd:          add an user
 ftpuser:          username is "ftpuser"
 -u 666:           user's UID is 666
@@ -79,4 +112,17 @@ ftpuser:          username is "ftpuser"
 -d /home/ftp:     user's home directory is /home/ftp
 -s /bin/bash:     user's login shell is "bash" 
 ```
-## Use Pure-pw to Manage Ftpusers
+(2) Use pure-pw to manage FTP users of pure-ftpd
+
+[ pure-pw useradd NAME -u UID -g GID -d /HOME_DIR]
+```bash
+pure-pw useradd ftpuser -u 666 -g 666 -d /home/ftp
+```
+```
+pure-pw:          pure-ftpd user managing tool
+useradd:          add an user
+ftpuser:          username is "ftpuser"
+-u 666:           user's UID is 666
+-g 666:           user's GID is 666
+-d /home/ftp:     user's home directory is /home/ftp
+```
