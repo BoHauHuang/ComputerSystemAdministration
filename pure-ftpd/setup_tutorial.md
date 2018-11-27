@@ -39,9 +39,9 @@ And do what you want to change for the pure-ftpd
 Such as
 ```bash
 MinUID                10
-PureDB                /usr/local/etc/pureftpd.pdb
-TLS                   1
-CertFile              /etc/ssl/private/pure-ftpd.pem
+PureDB                /usr/local/etc/pureftpd.pdb     (using pureDB to manage users)
+TLS                   1                               (using TLS)
+CertFile              /etc/ssl/private/pure-ftpd.pem  (TLS pem-file)
 ```
 
 ## Create Anonymous User for FTP
@@ -76,6 +76,7 @@ ftp:              username is "ftp"
 [ pure-pw useradd NAME -u UID -g GID -d /HOME_DIR]
 ```bash
 pure-pw useradd ftp -u 21 -g 21 -d /home/ftp
+pure-pw mkdb
 ```
 ```
 pure-pw:          pure-ftpd user managing tool
@@ -84,6 +85,8 @@ ftp:              username is "ftp"
 -u 21:            user's UID is 21 (Because MinUID is 10, so 21 is okay)
 -g 21:            user's GID is 21
 -d /home/ftp:     user's home directory is /home/ftp
+
+mkdb:             commit change of user data and update pureftpd.pdb file
 ```
 
 
@@ -117,6 +120,7 @@ ftpuser:          username is "ftpuser"
 [ pure-pw useradd NAME -u UID -g GID -d /HOME_DIR]
 ```bash
 pure-pw useradd ftpuser -u 666 -g 666 -d /home/ftp
+pure-pw mkdb
 ```
 ```
 pure-pw:          pure-ftpd user managing tool
@@ -125,4 +129,6 @@ ftpuser:          username is "ftpuser"
 -u 666:           user's UID is 666
 -g 666:           user's GID is 666
 -d /home/ftp:     user's home directory is /home/ftp
+
+mkdb:             commit change of user data and update pureftpd.pdb file
 ```
