@@ -133,4 +133,4 @@ ftpuser:          username is "ftpuser"
 mkdb:             commit change of user data and update pureftpd.pdb file
 ```
 
-## If you set TLS=1, please see "TLSsupport.md" for tutorial
+## If you set TLS=1, please see "TLS_support.md" for tutorial
