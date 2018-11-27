@@ -11,7 +11,7 @@
 **(3) Specific user restriction** 
 
 ## Zpool
-**(1) How to build mirror(RAID-1) storage**
+**(1) How to create mirror(RAID-1) storage**
 
 **(2) Setting storage**
 
