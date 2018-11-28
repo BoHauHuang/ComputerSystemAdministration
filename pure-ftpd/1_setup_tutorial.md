@@ -38,6 +38,7 @@ And do what you want to change for the pure-ftpd
 
 Such as
 ```bash
+ChrootEveryone        yes                             (let user stay in their root directory, can't do more cd ..)
 MinUID                10
 PureDB                /usr/local/etc/pureftpd.pdb     (using pureDB to manage users)
 TLS                   1                               (using TLS)
