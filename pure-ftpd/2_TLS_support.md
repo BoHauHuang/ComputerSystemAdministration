@@ -1,6 +1,8 @@
 # TLS Support
 ## Create pure-ftpd.pem file
 ```bash
+su   (become root)
+
 mkdir -p /etc/ssl/private
 
 openssl dhparam -out /etc/ssl/private/pure-ftpd-dhparams.pem 2048
