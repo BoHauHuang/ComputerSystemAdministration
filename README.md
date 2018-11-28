@@ -1,4 +1,4 @@
-# ComputerSystemAdministration (FreeBSD)
+# ComputerSystemAdministration (on Unix System)
 
 ## Some Shell Script exercise
 **Include:** ***Course Registration System*** **and** ***Filesystem Statistics***
