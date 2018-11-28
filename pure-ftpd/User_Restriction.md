@@ -30,6 +30,10 @@ Which permission?       deny        (can't do delete to files in directory named
 Where?                  test_dir    
 ```
 (3) Not allow both delete and download files in directory
+
+***Once setting new deny permission, it will overwrite the former setting***
+
+***In other word, if you want more than one restrict, you have to set them in one time***
 ```bash
 setfacl u:ftp:rD:deny test_dir
 
