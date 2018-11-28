@@ -4,31 +4,40 @@
 
 [setfacl -m u:USER:PERMISSION:FILE_or_DIR:STATUS  FILE]
 
-(1) Not allow download files in directory
-
+(1) Only not allow download files in directory
 ```bash
 setfacl u:ftp:r:f:deny test_dir
 
 
 Who?                    u           (user)
-What is his name?       ftp
+What is his name?       ftp         (anonymous username)
 Which action?           r           (read: for file, it's download permission)
 Which data?             f           (file)
 Which permission?       deny        (can't do download to files in directory named test_dir)
 Where?                  test_dir    
 ```
 
-(2) Not allow delete files in directory
-
+(2) Only not allow delete files in directory
 ```bash
 setfacl u:ftp:D:f:deny test_dir
 
 
 Who?                    u           (user)
-What is his name?       ftp
+What is his name?       ftp         (anonymous username)
 Which action?           D           (delete children, in other word, delete files in directory)
 Which data?             f           (file)
 Which permission?       deny        (can't do delete to files in directory named test_dir)
 Where?                  test_dir    
 ```
+(3) Not allow both delete and download files in directory
+```bash
+setfacl u:ftp:rD:deny test_dir
 
+
+Who?                    u           (user)
+What is his name?       ftp         (anonymous username)
+Which action?           r and D     (read and delete children)
+Which data?             f           (file)
+Which permission?       deny        (can't do delete to files in directory named test_dir)
+Where?                  test_dir
+```
