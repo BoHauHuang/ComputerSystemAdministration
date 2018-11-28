@@ -77,3 +77,20 @@ Which data?             d           (directory)
 Which permission?       allow       (can enter directories in directory named test_dir)
 Where?                  test_dir
 ```
+## Access Permissions (Often used)
+**For Files**
+```
+r:  read
+w:  edit
+x:  execute
+d:  delete
+```
+**For Directories**
+```
+r:  list directory    (ls)
+w:  create directory  (mkdir or touch a new file in directory)
+x:  change directory  (cd)
+D:  delete child      (delete datas in directoy)
+d:  delete            (delete this directory)
+p:
+```
