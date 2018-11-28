@@ -1,4 +1,5 @@
 # Setup pure-ftpd
+
 ## Port Forwarding for VM (if you are using VM)
 (1) Open port 20, 21 in your firewall
 
@@ -10,8 +11,9 @@
 
 ## Port Install
 ```bash
+su                            (become root)
 cd /usr/ports/ftp/pure-ftpd/
-make config (if you want to modify the config of pure-ftpd installation)
+make config                   (if you want to modify the config of pure-ftpd installation)
 make install clean
 ```
 
@@ -44,6 +46,10 @@ PureDB                /usr/local/etc/pureftpd.pdb     (using pureDB to manage us
 TLS                   1                               (using TLS)
 CertFile              /etc/ssl/private/pure-ftpd.pem  (TLS pem-file)
 ```
+## Create a Directory for FTP users
+```bash
+mkdir /home/ftp
+```
 
 ## Create Anonymous User for FTP
 ***for anonymous user, we need to create a system user called "ftp" for him.***
@@ -55,6 +61,7 @@ Use pw to manage system user (can add user, modify user, delete user, etc.)
 [ pw useradd NAME -u UID -g GID -d /HOME_DIR -s LOGIN_SHELL]
 
 (1) For anonymous user, we need to create a system user named "ftp".
+
 ```bash
 pw groupadd anonymous -g 21
 pw useradd ftp -u 21 -g 21 -d /home/ftp -s /bin/bash
