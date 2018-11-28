@@ -84,6 +84,9 @@ r:  read
 w:  edit
 x:  execute
 d:  delete
+o:  change owner (chown or chgrpc
+c:  read ACL     (getfacl)
+C:  change ACL   (setfacl, chmod)
 ```
 **For Directories**
 ```
@@ -91,6 +94,7 @@ r:  list directory    (ls)
 w:  create directory  (mkdir or touch a new file in directory)
 x:  change directory  (cd)
 D:  delete child      (delete datas in directoy)
-d:  delete            (delete this directory)
-p:
+o:  change owner      (chown or chgrp)
+c:  read ACL          (getfacl)
+C:  change ACL        (setfacl, chmod)
 ```
