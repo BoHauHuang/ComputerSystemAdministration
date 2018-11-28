@@ -4,13 +4,15 @@
 
 [setfacl -m u:USER:ACCESS_PERMISSION:FILE_or_DIR:TYPE  FILE]
 
+***-m:                   modify*** 
+
 ***ACCESS_PERMISSION:    r/w/x/p/D/d...***
 
 ***FILE_or_DIR:          f/d***
 
 ***TYPE:                 allow/deny***
 
-(1) Only not allow download files in directory
+(1)  Only not allow download files in directory
 ```bash
 setfacl u:ftp:r:f:deny test_dir
 
@@ -23,7 +25,7 @@ Which permission?       deny        (can't do download to files in directory nam
 Where?                  test_dir    
 ```
 
-(2) Only not allow delete files in directory
+(2)  Only not allow delete files in directory
 ```bash
 setfacl u:ftp:D:f:deny test_dir
 
@@ -35,7 +37,7 @@ Which data?             f           (file)
 Which permission?       deny        (can't do delete to files in directory named test_dir)
 Where?                  test_dir    
 ```
-(3) Not allow both delete and download files in directory
+(3)  Not allow both delete and download files in directory
 
 ***Once setting new deny permission, it will overwrite the former setting***
 
@@ -49,5 +51,29 @@ What is his name?       ftp         (anonymous username)
 Which action?           r and D     (read and delete children)
 Which data?             f           (file)
 Which permission?       deny        (can't do delete to files in directory named test_dir)
+Where?                  test_dir
+```
+(4)  Not allow list directory and files, but can enter the directories under test_dir
+
+**Not allow list directory and files: can't do "ls"**
+
+**Can enter the directories under test_dir: can do "cd /HIDDEN_DIR"**
+
+```bash
+setfacl -m u:ftp:r:d:deny test_dir
+setfacl -m u:ftp:x:d:allow test_dir
+
+Who?                    u           (user)
+What is his name?       ftp         (anonymous username)
+Which action?           r           (read: for directory, it equals to "ls")
+Which data?             d           (directory)
+Which permission?       deny        (can't see to files in directory named test_dir)
+Where?                  test_dir
+
+Who?                    u           (user)
+What is his name?       ftp         (anonymous username)
+Which action?           x           (execute: for directory, it equals to "cd")
+Which data?             d           (directory)
+Which permission?       allow       (can enter directories in directory named test_dir)
 Where?                  test_dir
 ```
