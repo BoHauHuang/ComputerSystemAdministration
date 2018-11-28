@@ -2,7 +2,10 @@
 
 **Use "setfacl" command to set access control list** 
 
-[setfacl -m u:USER:PERMISSION:FILE_or_DIR:STATUS  FILE]
+[setfacl -m u:USER:ACCESS_PERMISSION:FILE_or_DIR:TYPE  FILE]
+[ACCESS_PERMISSION:    r/w/x/p/D/d...
+FILE_or_DIR:          f/d
+TYPE:                 allow/deny]
 
 (1) Only not allow download files in directory
 ```bash
