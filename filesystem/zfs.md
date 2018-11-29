@@ -21,13 +21,20 @@ mirror:                raid type is mirror
 
 **(2) Status of zpools**
 
-[ zpool status ]
+[ zpool status [TARGET_POOL(Optional)] ]
 
 ```bash
 zpool status
 
 zpool:                 zpool manage tool
 status:                status of all zpools
+```
+```bash
+zpool status mypool
+
+zpool:                 zpool manage tool
+status:                status of all zpools
+mypool:                target pool name
 ```
 
 **(3) In "mypool" add another mirror storage**
@@ -45,13 +52,8 @@ mirror:                raid type is mirror
 /dev/ada4:             second disk for mirror
 ```
 
-Now you will have two mirror storage in a zpool
-
+Now you will have two mirror storage in a zpool like this:
 ```
-zpool status 
-
-and you will see:
-
  pool: mypool
  state: ONLINE
  scan: scrub repaired 0 in 0h0m with 0 errors on Fri May 30 08:29:51 2014
@@ -78,4 +80,32 @@ zpool:                 zpool manage tool
 detach:                remove a disk from pool
 mypool:                target pool name is "mypool"
 /dev/ada2:             target disk to be removed
+```
+Now you will have zpool like this:
+```
+ pool: mypool
+ state: ONLINE
+ scan: scrub repaired 0 in 0h0m with 0 errors on Fri May 30 08:29:51 2014
+ config:
+ 
+        NAME           STATE     READ WRITE CKSUM
+        mypool         ONLINE       0     0     0
+            /dev/ada1  ONLINE       0     0     0
+          mirror-1     ONLINE       0     0     0
+            /dev/ada3  ONLINE       0     0     0
+            /dev/ada4  ONLINE       0     0     0
+```
+
+**(5) Add a disk "/dev/ada5" into mypool and attach with /dev/ada1
+
+[ zpool attach TARGET_ZPOOL DISK_in_POOL NEW_DISK ]
+```bash
+zpool attach mypool /dev/ada1 /dev/ada5
+
+
+zpool:                 zpool manage tool
+attach:                add a disk into pool
+mypool:                target pool name is "mypool"
+/dev/ada1:             target disk to be attached with new disk
+/dev/ada5:             new disk to be attached with disk in pool
 ```
