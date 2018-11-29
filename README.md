@@ -10,15 +10,15 @@
 
 **(3) Specific user restriction** 
 
-## Zpool
+## ZFS
+
 **(1) How to create mirror(RAID-1) storage**
 
 **(2) Setting storage**
 
-## ZFS
-**(1) How to create/delete snapshot**
+**(3) How to create/delete snapshot**
 
-**(2) How to export/import snapshot**
+**(4) How to export/import snapshot**
 
 ## Writing a Command
 **(1) Getting Arguments**
