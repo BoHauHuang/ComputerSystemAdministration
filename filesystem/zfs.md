@@ -96,7 +96,7 @@ Now you will have zpool like this:
             /dev/ada4  ONLINE       0     0     0
 ```
 
-**(5) Add a disk "/dev/ada5" into mypool and attach with /dev/ada1
+**(5) Add a disk "/dev/ada5" into mypool and attach with /dev/ada1**
 
 [ zpool attach TARGET_ZPOOL DISK_in_POOL NEW_DISK ]
 ```bash
