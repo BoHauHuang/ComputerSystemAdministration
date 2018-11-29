@@ -45,6 +45,28 @@ mirror:                raid type is mirror
 /dev/ada4:             second disk for mirror
 ```
 
+Now you will have two mirror storage in a zpool
+
+```
+zpool status 
+
+and you will see:
+
+ pool: mypool
+ state: ONLINE
+ scan: scrub repaired 0 in 0h0m with 0 errors on Fri May 30 08:29:51 2014
+ config:
+ 
+        NAME           STATE     READ WRITE CKSUM
+        mypool         ONLINE       0     0     0
+          mirror-0     ONLINE       0     0     0
+            /dev/ada1  ONLINE       0     0     0
+            /dev/ada2  ONLINE       0     0     0
+          mirror-1     ONLINE       0     0     0
+            /dev/ada3  ONLINE       0     0     0
+            /dev/ada4  ONLINE       0     0     0
+```
+
 **(4) Remove disk "/dev/ada2" from "mypool"**
 
 [ zpool detach TARGET_ZPOOL TARGET_DISK]
