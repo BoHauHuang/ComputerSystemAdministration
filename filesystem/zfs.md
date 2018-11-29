@@ -109,3 +109,21 @@ mypool:                target pool name is "mypool"
 /dev/ada1:             target disk to be attached with new disk
 /dev/ada5:             new disk to be attached with disk in pool
 ```
+Now you will have two mirror storage in a zpool like this:
+```
+ pool: mypool
+ state: ONLINE
+ scan: scrub repaired 0 in 0h0m with 0 errors on Fri May 30 08:29:51 2014
+ config:
+ 
+        NAME           STATE     READ WRITE CKSUM
+        mypool         ONLINE       0     0     0
+          mirror-0     ONLINE       0     0     0
+            /dev/ada1  ONLINE       0     0     0
+            /dev/ada5  ONLINE       0     0     0
+          mirror-1     ONLINE       0     0     0
+            /dev/ada3  ONLINE       0     0     0
+            /dev/ada4  ONLINE       0     0     0
+```
+
+## ZFS
