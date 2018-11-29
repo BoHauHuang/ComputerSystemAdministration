@@ -4,7 +4,7 @@
 
 ***Please add sufficient disks in your device***
 
-(1) Create a mirror storage
+**(1) Create a mirror storage**
 
 [ zpool create POOL_NAME TYPE DISK1 DISK2... ]
 
@@ -19,7 +19,7 @@ mirror:                raid type is mirror
 /dev/ada2:             second disk for mirror
 ```
 
-(2) Status of zpools
+**(2) Status of zpools**
 
 [ zpool status ]
 
@@ -30,7 +30,7 @@ zpool:                 zpool manage tool
 status:                status of all zpools
 ```
 
-(3) In "mypool" add another mirror storage
+**(3) In "mypool" add another mirror storage**
 
 [ zpool add TARGET_ZPOOL TYPE DISK1 DISK2... ]
 
@@ -45,7 +45,7 @@ mirror:                raid type is mirror
 /dev/ada4:             second disk for mirror
 ```
 
-(4) Remove disk "/dev/ada2" from "mypool"
+**(4) Remove disk "/dev/ada2" from "mypool"**
 
 [ zpool detach TARGET_ZPOOL TARGET_DISK]
 
