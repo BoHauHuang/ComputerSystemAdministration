@@ -12,7 +12,7 @@
 
 ***TYPE:                 allow/deny***
 
-(1)  Only not allow download files in directory
+**(1)  Only not allow download files in directory**
 ```bash
 setfacl u:ftp:r:f:deny test_dir
 
@@ -25,7 +25,7 @@ Which permission?       deny        (can't do download to files in directory nam
 Where?                  test_dir    
 ```
 
-(2)  Only not allow delete files in directory
+**(2)  Only not allow delete files in directory**
 ```bash
 setfacl u:ftp:D:f:deny test_dir
 
@@ -37,7 +37,7 @@ Which data?             f           (file)
 Which permission?       deny        (can't do delete to files in directory named test_dir)
 Where?                  test_dir    
 ```
-(3)  Not allow both delete and download files in directory
+**(3)  Not allow both delete and download files in directory**
 
 ***Once setting new deny permission, it will overwrite the former setting***
 
@@ -53,7 +53,7 @@ Which data?             f           (file)
 Which permission?       deny        (can't do delete to files in directory named test_dir)
 Where?                  test_dir
 ```
-(4)  Not allow list directory and files, but can enter the directories under test_dir
+**(4)  Not allow list directory and files, but can enter the directories under test_dir**
 
 **Not allow list directory and files: can't do "ls"**
 
