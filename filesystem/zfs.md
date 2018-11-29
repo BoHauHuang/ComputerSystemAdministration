@@ -2,8 +2,6 @@
 ## Zpool
 **Manage ZFS pool (zpool)**
 
-***If you are using VM***
-
 ***Please add sufficient disks in your device***
 
 (1) Create a mirror storage
@@ -48,7 +46,9 @@ mirror:                raid type is mirror
 ```
 
 (4) Remove disk "/dev/ada2" from "mypool"
+
 [ zpool detach TARGET_ZPOOL TARGET_DISK]
+
 ```bash
 zpool detach mypool /dev/ada2
 
