@@ -56,7 +56,6 @@ Now you will have two mirror storage in a zpool like this:
 ```
  pool: mypool
  state: ONLINE
- scan: scrub repaired 0 in 0h0m with 0 errors on Fri May 30 08:29:51 2014
  config:
  
         NAME           STATE     READ WRITE CKSUM
@@ -85,7 +84,6 @@ Now you will have zpool like this:
 ```
  pool: mypool
  state: ONLINE
- scan: scrub repaired 0 in 0h0m with 0 errors on Fri May 30 08:29:51 2014
  config:
  
         NAME           STATE     READ WRITE CKSUM
@@ -113,7 +111,6 @@ Now you will have two mirror storage in a zpool like this:
 ```
  pool: mypool
  state: ONLINE
- scan: scrub repaired 0 in 0h0m with 0 errors on Fri May 30 08:29:51 2014
  config:
  
         NAME           STATE     READ WRITE CKSUM
