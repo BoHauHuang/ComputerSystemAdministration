@@ -1,1 +1,37 @@
 # Z FileSystem (ZFS)
+## List Datasets
+[ zfs list ]
+```bash
+zfs list
+```
+## Create Dataset
+[ zfs create DATASET ]
+```bash
+zfs create mypool/test
+
+zfs:                z-filesystem
+create:             create dataset
+mypool/test:        new dataset name is "mypool/test"
+```
+
+## Set Mountpoint of Dataset
+[ zfs set mountpoint=/PATH/TO/DIR DATASET ]
+```bash
+zfs set mountpoint=/home/ftp/test mypool/test
+
+zfs:                            z-filesystem
+set:                            setting dataset
+mountpoint=/home/ftp/test:      mountpoint is /home/ftp/test
+mypool/test:                    target dataset is mypool/test
+```
+
+## Change Compression type
+[ zfs set compression=TYPE DATASET ]
+```bash
+zfs set compression=gzip mypool/test
+
+zfs:                  z-filesystem  
+set:                  setting dataset
+compression=gzip:     set compression to "gzip"
+mypool/test:          the target dataset is "mypool/test"
+```
