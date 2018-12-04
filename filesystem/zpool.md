@@ -3,7 +3,7 @@
 
 ***Please add sufficient disks in your device***
 
-**(1) Create a mirror storage**
+## Create a mirror storage
 
 [ zpool create POOL_NAME TYPE DISK1 DISK2... ]
 
@@ -18,7 +18,7 @@ mirror:                raid type is mirror
 /dev/ada2:             second disk for mirror
 ```
 
-**(2) Status of zpools**
+## Status of zpools
 
 [ zpool status [TARGET_POOL(Optional)] ]
 
@@ -36,7 +36,7 @@ status:                status of all zpools
 mypool:                target pool name
 ```
 
-**(3) In "mypool" add another mirror storage**
+## In "mypool" add another mirror storage
 
 [ zpool add TARGET_ZPOOL TYPE DISK1 DISK2... ]
 
@@ -67,7 +67,7 @@ Now you will have two mirror storage in a zpool like this:
             /dev/ada4  ONLINE       0     0     0
 ```
 
-**(4) Remove disk "/dev/ada2" from "mypool"**
+## Remove disk "/dev/ada2" from "mypool"
 
 [ zpool detach TARGET_ZPOOL TARGET_DISK]
 
@@ -93,7 +93,7 @@ Now you will have zpool like this:
             /dev/ada4  ONLINE       0     0     0
 ```
 
-**(5) Add a disk "/dev/ada5" into mypool and attach with /dev/ada1**
+## Add a disk "/dev/ada5" into mypool and attach with /dev/ada1
 
 [ zpool attach TARGET_ZPOOL DISK_in_POOL NEW_DISK ]
 ```bash
