@@ -10,7 +10,7 @@
 
 **(3) Specific user restriction** 
 
-## ZFS
+## F
 
 **(1) How to create mirror(RAID-1) storage**
 
