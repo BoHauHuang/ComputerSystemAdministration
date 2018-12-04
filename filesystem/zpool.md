@@ -1,5 +1,4 @@
-# Z FileSystem (ZFS) and Zpool
-## Zpool
+# Zpool
 **Manage ZFS pool (zpool)**
 
 ***Please add sufficient disks in your device***
@@ -122,5 +121,3 @@ Now you will have two mirror storage in a zpool like this:
             /dev/ada3  ONLINE       0     0     0
             /dev/ada4  ONLINE       0     0     0
 ```
-
-## Z FileSystem (ZFS)
