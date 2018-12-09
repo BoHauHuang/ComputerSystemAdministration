@@ -1,9 +1,17 @@
 # Z-FileSystem (ZFS) Snapshot
 
-## List Snapshot
+## List Snapshots
 
 [ zfs list -t snapshot ]
 
+```bash
+zfs list -t snapshot
+
+zfs:                        z-filesystem
+list:                       list things in zfs
+-t:                         type of things
+snapshot:                   type is "snapshot"
+```
 
 ## Create Snapshot
 
