@@ -1,4 +1,4 @@
-# Z FileSystem (ZFS)
+# Z FileSystem (ZFS) Setup
 ## List Datasets
 [ zfs list ]
 ```bash
