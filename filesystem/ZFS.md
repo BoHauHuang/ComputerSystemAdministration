@@ -13,7 +13,15 @@ zfs:                z-filesystem
 create:             create dataset
 mypool/test:        new dataset name is "mypool/test"
 ```
+## Destroy Dataset
+[ zfs destroy DATASET ]
+```bash
+zfs destroy mypool/test
 
+zfs:               z-filesystem
+destroy:           destroy (delete) dataset
+mypool/test:       target dataset is "mypool/test"
+```
 ## Set Mountpoint of Dataset
 [ zfs set mountpoint=/PATH/TO/DIR DATASET ]
 ```bash
