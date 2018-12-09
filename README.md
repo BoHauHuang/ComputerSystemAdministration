@@ -6,9 +6,11 @@
 ## Pure-ftpd Setup
 **(1) How to setup pure-ftpd**
 
-**(2) How to manage FTP users**
+**(2) FTP with TLS **
 
-**(3) Specific user restriction** 
+**(3) How to manage FTP users**
+
+**(4) Specific user restriction** 
 
 ## FileSystem (Z-FileSystem)
 
