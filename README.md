@@ -6,7 +6,7 @@
 ## Pure-ftpd Setup
 **(1) How to setup pure-ftpd**
 
-**(2) FTP with TLS **
+**(2) FTP with TLS**
 
 **(3) How to manage FTP users**
 
