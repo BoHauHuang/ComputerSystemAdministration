@@ -22,5 +22,7 @@
 
 **(4) How to export/import snapshot**
 
-## Writing a Command (to run Z-FileSystem)
+## Writing a Command Script (to run Z-FileSystem)
 **(1) Getting Arguments**
+
+**(2) Run External Commands**
