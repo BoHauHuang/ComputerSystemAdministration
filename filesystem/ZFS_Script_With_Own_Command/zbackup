@@ -1,0 +1,261 @@
+#!/usr/local/bin/python3
+import sys, argparse
+import os
+
+def main():
+    target_data = ''
+    ID = ''
+    rotation_count = ''
+    
+    parser = argparse.ArgumentParser(usage="zbackup [[--list | --delete | --export] target-dataset [ID] | [-import] target-dataset filename | target dataset [rotation count]]")
+    parser.add_argument('--list', nargs='*')
+    parser.add_argument('--delete', nargs='+')
+    parser.add_argument('--export', nargs='+')
+    parser.add_argument('--import', nargs=2, dest="_import")
+    parser.add_argument('target_dataset', nargs='*')
+    
+    args = parser.parse_args()
+        
+    if args.list != None:
+        if len(args.list) == 2:
+            target_data = args.list[0]
+            ID = args.list[1]
+        if len(args.list) == 1:
+            target_data = args.list[0]
+        if len(args.list) > 2:
+            parser.print_help()
+        zfs_list = os.popen('sudo zfs list -t snapshot').readlines()
+        ids = ["ID"]
+        datasets = ["dataset"]
+        time = ["time"]
+        one_counter = 0
+        two_counter = 0
+        for i in range(len(zfs_list)-1):
+            data = zfs_list[i+1].split(" ")[0]
+            data = data.split("@")
+            dt = data[1].split("_")
+            year = str(dt[5])
+            day = str(dt[2])
+            month = ""
+            if dt[1] == "Jan":
+                month = str(1)
+            elif dt[1] == "Feb":
+                month = str(2)
+            elif dt[1] == "Mar":
+                month = str(3)
+            elif dt[1] == "Apr":
+                month = str(4)
+            elif dt[1] == "May":
+                month = str(5)
+            elif dt[1] == "Jun":
+                month = str(6)
+            elif dt[1] == "Jul":
+                month = str(7)
+            elif dt[1] == "Aug":
+                month = str(8)
+            elif dt[1] == "Sep":
+                month = str(9)
+            elif dt[1] == "Oct":
+                month = str(10)
+            elif dt[1] == "Nov":
+                month = str(11)
+            elif dt[1] == "Dec":
+                month = str(12)
+            datetime = year+"-"+month+"-"+day+" "+dt[3]
+            if len(args.list) == 0:
+                ids.append(i+1)
+                datasets.append(data[0])
+                time.append(datetime)
+            if len(args.list) == 1:
+                if target_data == str(data[0]):
+                    ids.append(one_counter+1)
+                    one_counter += 1
+                    datasets.append(data[0])
+                    time.append(datetime)
+            if len(args.list) == 2:
+                if target_data == str(data[0]):
+                    two_counter += 1
+                if target_data == str(data[0]) and two_counter == int(ID):
+                    ids.append(two_counter)
+                    datasets.append(data[0])
+                    time.append(datetime)
+        print(str(ids[0])+"    "+str(datasets[0])+"        "+str(time[0]))
+        for i in range(len(ids)):
+            if i != 0:
+                print(str(ids[i])+"     "+str(datasets[i])+"  "+str(time[i]))
+            
+        #print("List func: ", target_data, "and ID: ", ID)
+
+    elif args.delete != None:
+        if len(args.delete) > 2:
+            parser.print_help()
+
+        zfs_list = os.popen('sudo zfs list -t snapshot').readlines()
+        delete_counter = 0
+        if len(args.delete) == 1:
+            target_data = args.delete[0]
+            for i in range(len(zfs_list)-1):
+                this_data = zfs_list[i+1].split(" ")[0]
+                data = this_data.split("@")
+                if target_data == str(data[0]):
+                    os.system('sudo zfs destroy '+this_data)
+
+        if len(args.delete) == 2:
+            ID = args.delete[1]
+            target_data = args.delete[0]
+            for i in range(len(zfs_list)-1):
+                this_data = zfs_list[i+1].split(" ")[0]
+                data = this_data.split("@")
+                if target_data == str(data[0]):
+                    delete_counter += 1
+                if int(ID) == delete_counter:
+                    os.system('sudo zfs destroy '+this_data)
+        
+        #print("Delete func: ", target_data, "and ID: ", ID)
+
+    elif args.export != None:
+        target_data = args.export[0]
+        if len(args.export) == 2:
+            ID = args.export[1]
+        if len(args.export) == 1:
+            ID = 1
+        zfs_list = os.popen('sudo zfs list -t snapshot').readlines()
+        counter = 0
+        export_name = ""
+        export_dataset = ""
+
+        dt = str(os.popen('date').read())
+        dt = dt.replace("\n","")
+        dt = dt.split(" ")
+        year = str(dt[5])
+        day = str(dt[2])
+        month = ""
+        if dt[1] == "Jan":
+            month = str(1)
+        elif dt[1] == "Feb":
+            month = str(2)
+        elif dt[1] == "Mar":
+            month = str(3)
+        elif dt[1] == "Apr":
+            month = str(4)
+        elif dt[1] == "May":
+            month = str(5)
+        elif dt[1] == "Jun":
+            month = str(6)
+        elif dt[1] == "Jul":
+            month = str(7)
+        elif dt[1] == "Aug":
+            month = str(8)
+        elif dt[1] == "Sep":
+            month = str(9)
+        elif dt[1] == "Oct":
+            month = str(10)
+        elif dt[1] == "Nov":
+            month = str(11)
+        elif dt[1] == "Dec":
+            month = str(12)
+        for i in range(len(zfs_list)-1):
+            all_data = zfs_list[i+1].split(" ")[0]
+            data = all_data.split("@")
+            if target_data == data[0]:
+                counter += 1
+            if counter == int(ID) and target_data == data[0]:
+                export_name = all_data
+                export_dataset = data[0]
+                export_dataset = export_dataset.replace("/","-")
+                output_data_name = export_dataset+"@"+year+"-"+month+"-"+day
+                os.system('sudo zfs send '+export_name+' > '+output_data_name)
+                os.system('xz '+output_data_name)
+                os.system('openssl enc -aes-256-cbc -in '+output_data_name+'.xz -out '+output_data_name+'.xz.enc')
+                os.system('rm '+output_data_name+'.xz')
+
+        
+        #print("Export func: ", target_data, "and ID: ", ID)
+
+    elif args._import != None:
+        if len(args._import) < 2:
+            parser.print_help()
+        else:
+            target_data = args._import[0]
+            filename = args._import[1]
+            xz_filename = filename.replace(".enc","")
+            zfs_filename = xz_filename.replace(".xz","")
+
+            zfs_list = os.popen('sudo zfs list -t snapshot').readlines()
+            
+            for i in range(len(zfs_list)-1):
+                this_data = zfs_list[i+1].split(" ")[0]
+                data = this_data.split("@")[0]
+                if data == target_data:
+                    os.system('sudo zfs destroy '+this_data)
+
+            os.system('openssl enc -aes-256-cbc -d -in '+filename+' > '+xz_filename)
+            os.system('xz -d '+xz_filename)
+            os.system('sudo zfs receive -F '+target_data+' < '+zfs_filename)
+            #os.system('rm '+filename)
+            os.system('rm '+zfs_filename)
+        #print("Import func: ", target_data)
+
+    else:
+        if(len(args.target_dataset) == 0):
+            parser.print_help()
+        else:
+            target_data = args.target_dataset[0]
+            if len(args.target_dataset) == 2:
+                rotation_count = args.target_dataset[1]
+            else:
+                rotation_count = 20
+            dt = str(os.popen('date').read())
+            dt = dt.replace("\n","")
+            dt = dt.replace(" ","_")
+        
+            # get zfs list of snapshot
+            zfs_list = os.popen('sudo zfs list -t snapshot').readlines()
+            target_counter = 0
+            for i in range(len(zfs_list)-1):
+                data = zfs_list[i+1].split(" ")[0]
+                data = data.split("@")[0]
+                if target_data == data:
+                    target_counter += 1
+
+            # length of zfs list larger then rotation count 
+            if target_counter > int(rotation_count):
+                rotate_data = []
+                rotate_counter = 0
+                for i in range(len(zfs_list)-1):
+                    all_data = zfs_list[i+1].split(" ")[0]
+                    data = all_data.split("@")[0]
+                    if target_data == data and rotate_counter < target_counter-int(rotation_count)+1:
+                        rotate_counter += 1
+                        rotate_data.append(all_data)
+                for i in range(len(rotate_data)):
+                    os.system('sudo zfs destroy '+rotate_data[i])
+                    print("Rotate "+rotate_data[i])
+                os.system('sudo zfs snapshot '+target_data+'@'+dt)
+                print("Snap "+target_data+"@"+dt)
+
+            # length of zfs list equal rotation count
+            elif target_counter == int(rotation_count):
+                rotate_data = []
+                find_old = 0
+                for i in range(len(zfs_list)-1):
+                    all_data = zfs_list[i+1].split(" ")[0]
+                    data = all_data.split("@")[0]
+                    if data == target_data and not find_old:
+                        rotate_data = all_data
+                        find_all = 1
+
+                os.system('sudo zfs destroy '+rotate_data)
+                print("Rotate "+rotate_data)
+                os.system('sudo zfs snapshot '+target_data+'@'+dt)
+                print("Snap "+target_data+"@"+dt)
+
+            # length of zfs list smaller then rotation count
+            elif target_counter < int(rotation_count):
+                os.system('sudo zfs snapshot '+target_data+'@'+dt)
+                print("Snap "+target_data+"@"+dt)
+
+            #print("Default func: ", target_data, " and rotation: ", rotation_count)
+
+if __name__ == "__main__":
+    main()
