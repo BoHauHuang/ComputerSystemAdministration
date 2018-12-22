@@ -1,6 +1,6 @@
-## Writing own Command
+# Writing own Command
 
-### Your script should be placed under directory "/bin"
+## Your script should be placed under directory "/bin"
 
 **Specification are at page.14~17 in pdf**
 
@@ -10,4 +10,4 @@
 
 **Remember to add a shebang in the front of script**
 
-### Requirement for This Command Script
+## Requirement for This Command Script
