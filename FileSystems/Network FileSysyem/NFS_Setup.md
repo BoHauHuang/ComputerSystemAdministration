@@ -12,8 +12,18 @@ mountd_enable="YES"
 nfsuserd_enable="YES"
 nfs_server_flags="-u -t -n 4"
 ```
+
+**Service Commands**
+```bash
+service nfsd start (or stop | restart | status)
+```
 ## For NFS Client
 **Add this line in rc.conf**
 ```bash
 nfs_client_enable="YES"
+nfscbd_enable="YES"
+```
+**Service Commands**
+```bash
+service nfsuserd start (or stop | restart | status)
 ```
