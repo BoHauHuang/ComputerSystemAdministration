@@ -1,4 +1,4 @@
-# Network FileSystem (NFS in FreeBSD)
+# Network FileSystem (in FreeBSD)
 ## Enable Service in /etc/rc.conf
 ```bash
 vim /etc/rc.conf
