@@ -7,6 +7,9 @@ vim /etc/rc.conf
 **Add these lines in rc.conf**
 ```bash
 nfs_server_enable="YES"
+nfsv4_server_enable="YES"
+mountd_enable="YES"
+nfsuserd_enable="YES"
 nfs_server_flags="-u -t -n 4"
 ```
 ## For NFS Client
