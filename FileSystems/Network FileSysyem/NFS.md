@@ -10,7 +10,7 @@ nfs_server_enable="YES"
 nfs_server_flags="-u -t -n 4"
 ```
 ## For NFS Client
-**Add these lines in rc.conf**
+**Add this line in rc.conf**
 ```bash
 nfs_client_enable="YES"
 ```
