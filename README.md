@@ -6,7 +6,7 @@
 ## Pure-ftpd Setup
 **(1) How to setup pure-ftpd**
 
-**(2) FTP with TLS **
+**(2) FTP with TLS**
 
 **(3) How to manage FTP users**
 
@@ -22,5 +22,7 @@
 
 **(4) How to export/import snapshot**
 
-## Writing a Command (to run Z-FileSystem)
+## Writing a Command Script (to run Z-FileSystem)
 **(1) Getting Arguments**
+
+**(2) Run External Commands**
