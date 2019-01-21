@@ -1,11 +1,11 @@
 #!/bin/sh
 
-ls -lAS | 
+ls -lASR | 
+	sort -nrk 5 |
 	awk 'BEGIN{file=0 
 	           dir=0 
 		   size=0}
-	     NR==2, NR==6 {print ++num":", $5, $9}
-	     match($1,/^-/){file++}
+	     NR==1, NR==5 {print ++num":", $5, $9}
+	     match($1,/^-/){file++;size+=$5}
 	     match($1,/^d/){dir++}
-	     {size+=$5}
 	     END{print "Dir num: ", dir, "\nFile num: ", file, "\nTotal: ", size}'
