@@ -1,4 +1,4 @@
-# Export Sharing FileSystem
+# Export FileSystem
 ## Edit /etc/exports
 **This file specifiy which directory will be shared**
 
