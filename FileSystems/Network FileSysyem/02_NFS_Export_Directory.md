@@ -49,3 +49,9 @@ netgroup                             Specify NIS netgroups
 /net/test_dirA  -ro -mapall=testuser
 /net/test_dirB
 ```
+
+## Step 4: Reload Mountd
+**After edit /etc/exports, we must reload mountd**
+```csh
+service mountd reload
+```
