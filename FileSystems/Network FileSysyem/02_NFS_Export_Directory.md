@@ -1,8 +1,33 @@
 # Export FileSystem
-## Edit /etc/exports
+
+## Step 0: Choose which Directory you want to export
+**I want to export these directories:**
+```
+/nfs/test_dirA
+/nfs/test_dirB
+```
+
+## Step 1: Create ZFS filesystem
+**Only when the directories has own mountpoints, clients can mount all directories successfully.**
+
+**Command format: [ zfs create ZPOOL_NAME/DIR_NAME ]
+```csh
+zfs create zroot/test_dirA
+zfs create zroot/test_dirB
+```
+
+## Step 2: Set Mountpoints
+**Command format: [ zfs set mountpoint=/PATH_TO_DIR  ZPOOL_NAME/DIR_NAME ]
+```csh
+zfs set mountpoint=/nfs/test_dirA zroot/test_dirA
+zfs set mountpoint=/nfs/test_dirB zroot/test_dirB
+```
+
+
+## Step 3: Edit /etc/exports
 **This file specifiy which directory will be shared**
 
-**Command Format: [ directory-list  option-list  cliect-list ]**
+**Command format: [ directory-list  option-list  cliect-list ]**
 
 Option-list:
 ```csh
@@ -19,13 +44,8 @@ netgroup                             Specify NIS netgroups
 -network A.B.C.D -mask E.F.G.H       network IP and mask
 ```
 
-## Some Examples
 **Example of /etc/exports**
 ```csh
-/home  -ro -mapall=nobody testhost
-
-/home:                          Sharing "/home" directory (but subdirectories are not to be mounted)
--ro:                            Read-only
--mapall=nobody:                 Mapping all users to nobody
-testhost:                       host name is testhost
+/net/test_dirA  -ro -mapall=testuser
+/net/test_dirB
 ```
