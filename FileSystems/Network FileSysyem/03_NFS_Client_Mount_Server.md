@@ -3,7 +3,7 @@
 ```csh
 vim /etc/rc.conf
 ```
-*add these in rc.conf*
+**add these in rc.conf**
 ```csh
 nfs_client_enable="YES"
 nfscbd_enable="YES"
