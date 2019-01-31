@@ -10,7 +10,7 @@ nfscbd_enable="YES"
 ```
 
 ## Step 2: Check export list
-**Command format: [ showmount -e SERVER_IP ]
+**Command format: [ showmount -e SERVER_IP ]**
 ```csh
 showmount -e XXX.XXX.XXX.XXX
 ```
