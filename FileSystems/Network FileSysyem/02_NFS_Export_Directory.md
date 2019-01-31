@@ -5,7 +5,7 @@
 **Command Format: [ directory-list  option-list  cliect-list ]**
 
 Option-list:
-```bash
+```csh
 -ro                                Exports read-only, default is read-write
 -alldirs                           Allow any subdirectory to be mounted
 -maproot=TEST                      Mapping root to the user named "TEST" (root become TEST when change file)
@@ -21,7 +21,7 @@ netgroup                             Specify NIS netgroups
 
 ## Some Examples
 **Example of /etc/exports**
-```bash
+```csh
 /home  -ro -mapall=nobody testhost
 
 /home:                          Sharing "/home" directory (but subdirectories are not to be mounted)
