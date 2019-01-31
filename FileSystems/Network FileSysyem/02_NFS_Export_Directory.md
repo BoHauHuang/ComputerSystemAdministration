@@ -13,7 +13,7 @@ Option-list:
 ```
 
 Client-list:
-```bash
+```csh
 hostname                             Specify host name (e.g. my hostname)
 netgroup                             Specify NIS netgroups
 -network A.B.C.D -mask E.F.G.H       network IP and mask
