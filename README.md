@@ -12,11 +12,19 @@
 
 **(4) Specific user restriction** 
 
-## FileSystem (Z-FileSystem)
+## Web Server (Apache 2.4 and Nginx)
+**(1) How to install web server**
 
+**(2) Hosts configuration**
+
+**(3) Forbidden connect from IP**
+
+**(4) Reverse Proxy**
+
+## Z-FileSystem (ZFS)
 **(1) How to create mirror(RAID-1) storage**
 
-**(2) Setting storage**
+**(2) Setting of storage**
 
 **(3) How to create/delete snapshot**
 
@@ -26,3 +34,8 @@
 **(1) Getting Arguments**
 
 **(2) Run External Commands**
+
+## Network FileSystem (NFS)
+**(1) How to export filesystem**
+
+**(2) How to mount NFS server**
