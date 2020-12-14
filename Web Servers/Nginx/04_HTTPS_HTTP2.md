@@ -1,20 +1,19 @@
-# Nginx Setup (in FreeBSD)
+# HTTPS && HTTP2 (nginx)
 
-### install (PKG)
+### Generate key and certification (Self Signed)
 ```sh
-sudo pkg install nginx
-```
-### install (PORT)
-```sh
-cd /usr/ports/www/nginx/
-sudo make install
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout <path_to_key> -out <path_to_certification>
 ```
 
-### Enable 
+### in /usr/local/etc/nginx/nginx.conf
 ```sh
-vim /etc/rc.conf
-``` 
-```sh
-(in /etc/rc.conf)
-nginx_enable="YES"
+server {
+	listen 443 ssl http2;
+	server_name <host_name>;
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_certificate <path_to_certification>;
+	ssl_certificate_key <path_to_key>;
+	...
+	...
+}
 ```

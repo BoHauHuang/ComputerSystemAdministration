@@ -1,20 +1,11 @@
-# Nginx Setup (in FreeBSD)
+# Virtual Hosts (Nginx)
 
-### install (PKG)
+### in /usr/local/etc/nginx/nginx.conf
 ```sh
-sudo pkg install nginx
-```
-### install (PORT)
-```sh
-cd /usr/ports/www/nginx/
-sudo make install
-```
-
-### Enable 
-```sh
-vim /etc/rc.conf
-``` 
-```sh
-(in /etc/rc.conf)
-nginx_enable="YES"
+server {
+	listen ...;
+	server_name  <host_name>;
+	....
+	....
+}
 ```
